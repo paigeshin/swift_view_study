@@ -2,6 +2,8 @@
 
 Project 개요
 
+- ios_custom_view : Component 만들기
+
 1. Create file with `Cocoatouch` and `xib` 
 2. Design your component
 3. ❗️Especially, don't forget to set your view as `freeform` 
@@ -16,5 +18,5 @@ Project 개요
             //Main View 밖에서 `xib`로 만들어 놓은 Component를 가져온다.
             func addProfileHeaderTo(viewController: UIViewController) {
                 let profileHeader: ProfileHeaderViewController = ProfileHeaderViewController(nibName: "ProfileHeaderViewController", bundle: nil)
-                 viewController.view.addSubview(profileHeader.view)
+                viewController.view.addSubview(profileHeader.view)
             }
