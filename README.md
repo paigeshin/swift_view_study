@@ -15,6 +15,6 @@ Project 개요
 
             //Main View 밖에서 `xib`로 만들어 놓은 Component를 가져온다.
             func addProfileHeaderTo(viewController: UIViewController) {
-              let profileHeader: ProfileHeaderViewController = ProfileHeaderViewController(nibName: "ProfileHeaderViewController", bundle: nil)
-              viewController.view.addSubview(profileHeader.view)
+                let profileHeader: ProfileHeaderViewController = ProfileHeaderViewController(nibName: "ProfileHeaderViewController", bundle: nil)
+                 viewController.view.addSubview(profileHeader.view)
             }
