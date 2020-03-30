@@ -3,6 +3,7 @@
 Project 개요
 
 `- ios_custom_view : ViewController로 Component 만들기`
+=============
 
 1. Create file with `Cocoatouch` and `xib` 
 2. Design your component
@@ -25,6 +26,7 @@ Project 개요
 
 
 `- ios_custom_view_second : UIView로 Component 만들기`
+=============
 
 참고자료 : https://guides.codepath.com/ios/Custom-Views-Quickstart
 
@@ -66,6 +68,7 @@ Project 개요
 
 
 Swift Slide Show
+=============
 
             //
             //  ViewController.swift
@@ -151,6 +154,7 @@ Swift Slide Show
 
 
 Segmented Control - MasterviewController which contains child view controllers
+=============
 
 
         //
