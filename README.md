@@ -277,3 +277,9 @@ iii. segment index에 따라서 화면을 rendering 해주게 설정
                 summaryViewController.view.isHidden = !(segmentedControl.selectedSegmentIndex == 0)
                 sessionsViewController.view.isHidden = (segmentedControl.selectedSegmentIndex == 0)
             }
+
+
+Custom AlertView
+=============
+
+- 참고만 함, ios 13.4에서는 똑같은 코드로 해도 안됨.
