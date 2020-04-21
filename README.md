@@ -283,3 +283,83 @@ Custom AlertView
 =============
 
 - 참고만 함, ios 13.4에서는 똑같은 코드로 해도 안됨.
+
+
+
+
+
+# Collection View 정리 
+
+### 🔷 고정되지 않은 크기
+
+### Pinterest Style CollectionViewCell
+- **estimated size: automatic**
+
+### 🔷고정된 크기 - 공통
+
+- imageView, equal width, equal height, horizontal center, vertical center
+- 그냥 constraint로 top right bottom left 다 맞춰줘도 된다.
+- **estimated size : none**
+
+### Full Size CollectionView Cell 만들기
+
+       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let size = collectionView.frame.size //* 이 부분
+            return CGSize(width: size.width, height: size.height)
+        }
+
+    extension ViewController: UICollectionViewDelegateFlowLayout {
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+    
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let size = collectionView.frame.size //* 이 부분
+            return CGSize(width: size.width, height: size.height)
+        }
+    
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 0.0
+        }
+    
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 0.0
+        }
+        
+    }
+
+### 3분의 1의 크기 또는 5분의 1의 크기로 각각의 cell을 맞춰주기
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let width: CGFloat = collectionView.frame.width / 3 - 1
+            return CGSize(width: width, height: width)
+        }
+
+    extension ViewController: UICollectionViewDelegateFlowLayout {
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            
+            let width: CGFloat = collectionView.frame.width / 3 - 1
+            
+            return CGSize(width: width, height: width)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 1.0
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            1.0
+        }
+        
+    }
+
+### CollectionView의 크기가 cell의 사이즈만큼 늘어나게 하기
+
+    - collection view의 height constraint를 가져온다.
+    - constraint height 사이즈를 가져오면 dynamic하게 못한다고 생각할 수 있지만 어차피 코드로 맞춰줘서 상관이 없다.
+
+        override func viewDidLayoutSubviews() {
+            collectionViewHeight.constant = collectionView.contentSize.height
+        }
